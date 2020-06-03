@@ -1,0 +1,20 @@
+{
+  [{
+      question: "Why Workflow?",
+      answer: [
+        "Optimize Code",
+        "Use Next-Gen JS Features",
+        "More Productive"
+      ]
+    },
+    {
+      question: "How to setup Workflow?",
+      answer: [
+        "Dependency management using npm",
+        "Use bundling software - webpack",
+        "Use Compiler that translates ES6 to ES5 or lower - Babel + Preset",
+        "Use a Development Server"
+      ]
+    }
+  ]
+}
