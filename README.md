@@ -6,3 +6,4 @@
 # create-react-app react-complete-guide --scripts-version 1.1.5
 -> cd {my-app}
 -> npm start
+# https://create-react-app.dev/docs/getting-started/
