@@ -11,9 +11,8 @@ class App extends Component {
       // This is similar to HTML but it is actually JSX
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        <Person />
-        <Person></Person>
+        <Person name="Mansi" age="19" />
+        <Person name="Mihir" age="25">My hobbies : Watching Movies!</Person>
       </div>
       // <h1> Another Heading</h1> ->
       // As JSX can have only one root element

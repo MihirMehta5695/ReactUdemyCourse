@@ -16,8 +16,11 @@ var personES5 = function () {
 
 // The convention and
 //the standard using ES6 is 
-const person = () => {
-    return <p>I'm a Person!</p>
+// props can have any  name
+// When using class-based components, we access props by -> this.props
+
+const person = (props) => {
+    return <p>I'm a {props.name} and I am {props.age} years old!</p>
 }
 
 export default person;
