@@ -20,7 +20,14 @@ var personES5 = function () {
 // When using class-based components, we access props by -> this.props
 
 const person = (props) => {
-    return <p>I'm a {props.name} and I am {props.age} years old!</p>
+    // 'children' is a reserved keyword
+    // we can access the data passed between the component tag using props.children
+    return (
+        <div>
+            <p>I'm a {props.name} and I am {props.age} years old!</p>
+            <p>{props.children}</p>
+        </div>
+    )
 }
 
 export default person;
