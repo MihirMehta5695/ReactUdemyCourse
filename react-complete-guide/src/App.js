@@ -18,14 +18,22 @@ class App extends Component {
         ]
     };
 
+    // typically an event handler function is named as {functionName}Handler,
+    // For eg:
+    switchNameHandler = () => {
+        alert('Was clicked!')
+    }
+
     render() {
         // className is restriction of JSX as class is a reserved keyword in JS
         return (
             // This is similar to HTML but it is actually JSX
+            // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
+            // just call the method by this.switchNameHandler
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p>This is really working!</p>
-                <button>Switch Name</button>
+                <button onClick={this.switchNameHandler}>Switch Name</button>
                 <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
                 <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies : Watching Movies!</Person>
                 <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
