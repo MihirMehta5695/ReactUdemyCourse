@@ -15,13 +15,22 @@ class App extends Component {
             { name: 'Mihir', age: 25 },
             { name: "Mansi", age: 19 },
             { name: "Bhavesh", age: 53 }
-        ]
+        ],
+        otherValue: "Some other value"
     };
 
     // typically an event handler function is named as {functionName}Handler,
     // For eg:
     switchNameHandler = () => {
-        alert('Was clicked!')
+        // this will not work -> this.state.persons[0].name="13MB";
+        // The following code would only merge the persons object and wont change anything else , for eg otherValue would be unchanged
+        this.setState({
+            persons: [
+                { name: '13MB', age: 25 },
+                { name: "Mansi", age: 19 },
+                { name: "Bhavesh", age: 52 }
+            ]
+        });
     }
 
     render() {
