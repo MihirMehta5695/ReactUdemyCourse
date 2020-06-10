@@ -6,55 +6,56 @@ import Person from './Person/Person.js'
 // In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
 class App extends Component {
 
-    // only works when we have extended React.Component
-    // props is data sent from another component
-    // state is data maintained internally by the component
-    // state is a reserved word
-    state = {
-        persons: [
-            { name: 'Mihir', age: 25 },
-            { name: "Mansi", age: 19 },
-            { name: "Bhavesh", age: 53 }
-        ],
-        otherValue: "Some other value"
-    };
+  // only works when we have extended React.Component
+  // props is data sent from another component
+  // state is data maintained internally by the component
+  // state is a reserved word
+  state = {
+    persons: [
+      { name: 'Mihir', age: 25 },
+      { name: "Mansi", age: 19 },
+      { name: "Bhavesh", age: 53 }
+    ],
+    otherValue: "Some other value"
+  };
 
-    // typically an event handler function is named as {functionName}Handler,
-    // For eg:
-    switchNameHandler = () => {
-        // this will not work -> this.state.persons[0].name="13MB";
-        // The following code would only merge the persons object and wont change anything else , for eg otherValue would be unchanged
-        this.setState({
-            persons: [
-                { name: '13MB', age: 25 },
-                { name: "Mansi", age: 19 },
-                { name: "Bhavesh", age: 52 }
-            ]
-        });
-    }
+  // typically an event handler function is named as {functionName}Handler,
+  // For eg:
+  switchNameHandler = () => {
+    // this will not work -> this.state.persons[0].name="13MB";
+    // The following code would only merge the persons object and wont change anything else , for eg otherValue would be unchanged
+    // This is only available in class-based components
+    this.setState({
+      persons: [
+        { name: '13MB', age: 25 },
+        { name: "Mansi", age: 19 },
+        { name: "Bhavesh", age: 52 }
+      ]
+    });
+  }
 
-    render() {
-        // className is restriction of JSX as class is a reserved keyword in JS
-        return (
-            // This is similar to HTML but it is actually JSX
-            // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
-            // just call the method by this.switchNameHandler
-            <div className="App">
-                <h1>Hi, I'm a React App</h1>
-                <p>This is really working!</p>
-                <button onClick={this.switchNameHandler}>Switch Name</button>
-                <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-                <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies : Watching Movies!</Person>
-                <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
-            </div>
-            // <h1> Another Heading</h1> ->
-            // As JSX can have only one root element
-        );
-        // return React.createElement('div', null, 'h1', 'Hi, I\'m a React App!!!');
-        // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
-        // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
+  render() {
+    // className is restriction of JSX as class is a reserved keyword in JS
+    return (
+      // This is similar to HTML but it is actually JSX
+      // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
+      // just call the method by this.switchNameHandler
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p>This is really working!</p>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies : Watching Movies!</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+      </div>
+      // <h1> Another Heading</h1> ->
+      // As JSX can have only one root element
+    );
+    // return React.createElement('div', null, 'h1', 'Hi, I\'m a React App!!!');
+    // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
+    // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
 
-    }
+  }
 }
 
 export default App;
