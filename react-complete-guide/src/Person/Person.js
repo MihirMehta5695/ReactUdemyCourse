@@ -1,16 +1,18 @@
 // React convention to name component Folder with capital letter
 // Also, it is also convention to name all the files in same context
 // react is all about compos
+// This is a state-less component 
+// Also called as dumb component or presentational component
 
 import React from 'react';
 
 // This is possible
-function PersonOld() {
+export function PersonOld() {
     return <h2>Hello World!</h2>
 }
 
 // This is also possible (ES5 syntax)
-var personES5 = function () {
+export var personES5 = function () {
     return <h2>Hello World!<br />This is a person component!</h2>
 };
 
@@ -24,10 +26,11 @@ const person = (props) => {
     // we can access the data passed between the component tag using props.children
     return (
         <div>
-            <p>I'm a {props.name} and I am {props.age} years old!</p>
+            <p onClick={props.myClick}>I'm a {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
         </div>
     )
+    // here, the props.myClick is the function passed by the parent component
 }
 
 export default person;

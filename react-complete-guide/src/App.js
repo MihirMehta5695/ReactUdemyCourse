@@ -5,6 +5,10 @@ import Person from './Person/Person.js'
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
 // In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
 class App extends Component {
+  // This is a state-full component
+  // or called as smart component or container component
+  // It is a good practise to create as many state-less component as possible.
+
 
   // only works when we have extended React.Component
   // props is data sent from another component
@@ -21,13 +25,13 @@ class App extends Component {
 
   // typically an event handler function is named as {functionName}Handler,
   // For eg:
-  switchNameHandler = () => {
+  switchNameHandler = newName => {
     // this will not work -> this.state.persons[0].name="13MB";
     // The following code would only merge the persons object and wont change anything else , for eg otherValue would be unchanged
     // This is only available in class-based components
     this.setState({
       persons: [
-        { name: '13MB', age: 25 },
+        { name: newName, age: 25 },
         { name: "Mansi", age: 19 },
         { name: "Bhavesh", age: 52 }
       ]
@@ -43,10 +47,18 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies : Watching Movies!</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <button onClick={() => this.switchNameHandler('13MB!!!!')}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          myClick={this.switchNameHandler.bind(this, 'MMB!')}
+        >My hobbies : Watching Movies!</Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
       </div>
       // <h1> Another Heading</h1> ->
       // As JSX can have only one root element
