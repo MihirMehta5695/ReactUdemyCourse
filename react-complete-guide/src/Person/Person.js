@@ -28,9 +28,11 @@ const person = (props) => {
         <div>
             <p onClick={props.myClick}>I'm a {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
+            <input type="text" onChange={props.myChange} value={props.name} />
         </div>
     )
     // here, the props.myClick is the function passed by the parent component
+    // here, the props.myChange is the function passed by the parent component
 }
 
 export default person;
