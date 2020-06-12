@@ -5,6 +5,8 @@
 // Also called as dumb component or presentational component
 
 import React from 'react';
+import './Person.css'
+// Remember to import the css file to apply css styles
 
 // This is possible
 export function PersonOld() {
@@ -25,7 +27,7 @@ const person = (props) => {
     // 'children' is a reserved keyword
     // we can access the data passed between the component tag using props.children
     return (
-        <div>
+        <div className="Person">
             <p onClick={props.myClick}>I'm a {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.myChange} value={props.name} />
