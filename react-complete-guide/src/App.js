@@ -61,7 +61,9 @@ class App extends Component {
             font: 'inherit',
             border: "1px solid blue",
             padding: "8px",
-            cursor: 'pointer'
+            cursor: 'pointer',
+            border: '1px solid blue',
+            'boxShadow': '2px 4px 5px lightblue'
         };
 
         // className is restriction of JSX as class is a reserved keyword in JS

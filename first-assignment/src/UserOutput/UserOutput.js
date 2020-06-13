@@ -4,7 +4,8 @@ export default class UserOutput extends Component {
     render(props) {
         return (
             <div>
-                <p>{this.props.userName}</p>
+                <p>Hello {this.props.userName}</p>
+                <p>Hope you are doing well!</p>
             </div>
         )
     }

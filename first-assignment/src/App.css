@@ -2,12 +2,21 @@
     text-align: center;
 }
 
-.ioContainer {
-    margin-top: 5%;
+.outputContainer {
     border: 1px solid grey;
     width: 50%;
     padding: 1%;
     text-align: center;
     margin-left: 20%;
     box-shadow: #ccc 4px 4px 4px;
+}
+
+.below-spacing {
+    margin-bottom: 5%;
+}
+
+.UserInput input{
+    border: 0px;
+    border-bottom: 2px solid pink;
+    max-width: fit-content;
 }
