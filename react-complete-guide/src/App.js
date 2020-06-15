@@ -16,9 +16,9 @@ class App extends Component {
     // state is a reserved word
     state = {
         persons: [
-            { name: 'Mihir', age: 25 },
-            { name: "Mansi", age: 19 },
-            { name: "Bhavesh", age: 53 }
+            { id: "sadvcxasd", name: 'Mihir', age: 25 },
+            { id: "das2qe", name: "Mansi", age: 19 },
+            { id: "q2dasd", name: "Bhavesh", age: 53 }
         ],
         otherValue: "Some other value",
         showPersons: false
@@ -97,7 +97,9 @@ class App extends Component {
                                 <Person
                                     myClick={() => this.deletePersonHandler(index)}
                                     name={person.name}
-                                    age={person.age} />
+                                    age={person.age}
+                                    key={person.id}
+                                />
                             )
                         })}
                 </div>
