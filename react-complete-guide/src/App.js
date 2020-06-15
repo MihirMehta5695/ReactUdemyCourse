@@ -20,7 +20,8 @@ class App extends Component {
             { name: "Mansi", age: 19 },
             { name: "Bhavesh", age: 53 }
         ],
-        otherValue: "Some other value"
+        otherValue: "Some other value",
+        showPersons: false
     };
 
     // This will be passed down to the child element,
@@ -54,12 +55,16 @@ class App extends Component {
         });
     }
 
+    togglePersonsHandler = () => {
+        const doesShow = this.state.showPersons;
+        this.setState({ showPersons: !doesShow })
+    };
+
     render() {
 
         const myButtonStyle = {
             backgroundColor: "white",
             font: 'inherit',
-            border: "1px solid blue",
             padding: "8px",
             cursor: 'pointer',
             border: '1px solid blue',
@@ -76,19 +81,25 @@ class App extends Component {
                 <p>This is really working!</p>
                 <button
                     style={myButtonStyle}
-                    onClick={() => this.switchNameHandler('13MB!!!!')}>Switch Name</button>
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age} />
-                <Person
-                    name={this.state.persons[1].name}
-                    age={this.state.persons[1].age}
-                    myClick={this.switchNameHandler.bind(this, 'MMB!')}
-                    myChange={this.nameChangedHandler}
-                >My hobbies : Watching Movies!</Person>
-                <Person
-                    name={this.state.persons[2].name}
-                    age={this.state.persons[2].age} />
+                    onClick={this.togglePersonsHandler}>Toggle Persons</button>
+                {
+                    // This is the "if" block
+                    this.state.showPersons === true ?
+                        <div>
+                            <Person
+                                name={this.state.persons[0].name}
+                                age={this.state.persons[0].age} />
+                            <Person
+                                name={this.state.persons[1].name}
+                                age={this.state.persons[1].age}
+                                myClick={this.switchNameHandler.bind(this, 'MMB!')}
+                                myChange={this.nameChangedHandler}
+                            >My hobbies : Watching Movies!</Person>
+                            <Person
+                                name={this.state.persons[2].name}
+                                age={this.state.persons[2].age} />
+                        </div> : null
+                }
             </div>
             // <h1> Another Heading</h1> ->
             // As JSX can have only one root element
