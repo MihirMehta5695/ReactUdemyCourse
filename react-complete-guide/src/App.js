@@ -62,7 +62,13 @@ class App extends Component {
     };
 
     deletePersonHandler = (personIndex) => {
-        const persons = this.state.persons;
+        // const persons = this.state.persons;
+        // Above line is flawed and can lead to unexpected outcomes in a huge app
+        // Instead of copying reference, now the actual contents are copied into person
+        // Using the slice method with no args we copy all the contents of array 
+        const personsOld = this.state.persons.slice();
+        // Or you can also use the spread operator ...
+        const persons = [...this.state.persons];
         persons.splice(personIndex, 1);
         this.setState({ persons: persons })
     };
