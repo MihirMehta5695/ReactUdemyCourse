@@ -62,6 +62,8 @@ class App extends Component {
 
     render() {
 
+        // Everything gets executed again whenever the render method is called for update
+
         const myButtonStyle = {
             backgroundColor: "white",
             font: 'inherit',
@@ -70,6 +72,27 @@ class App extends Component {
             border: '1px solid blue',
             'boxShadow': '2px 4px 5px lightblue'
         };
+
+        let persons = null;
+
+        if (this.state.showPersons) {
+            persons = (
+                <div>
+                    <Person
+                        name={this.state.persons[0].name}
+                        age={this.state.persons[0].age} />
+                    <Person
+                        name={this.state.persons[1].name}
+                        age={this.state.persons[1].age}
+                        myClick={this.switchNameHandler.bind(this, 'MMB!')}
+                        myChange={this.nameChangedHandler}
+                    >My hobbies : Watching Movies!</Person>
+                    <Person
+                        name={this.state.persons[2].name}
+                        age={this.state.persons[2].age} />
+                </div>
+            );
+        }
 
         // className is restriction of JSX as class is a reserved keyword in JS
         return (
@@ -82,24 +105,8 @@ class App extends Component {
                 <button
                     style={myButtonStyle}
                     onClick={this.togglePersonsHandler}>Toggle Persons</button>
-                {
-                    // This is the "if" block
-                    this.state.showPersons === true ?
-                        <div>
-                            <Person
-                                name={this.state.persons[0].name}
-                                age={this.state.persons[0].age} />
-                            <Person
-                                name={this.state.persons[1].name}
-                                age={this.state.persons[1].age}
-                                myClick={this.switchNameHandler.bind(this, 'MMB!')}
-                                myChange={this.nameChangedHandler}
-                            >My hobbies : Watching Movies!</Person>
-                            <Person
-                                name={this.state.persons[2].name}
-                                age={this.state.persons[2].age} />
-                        </div> : null
-                }
+                {persons}
+
             </div>
             // <h1> Another Heading</h1> ->
             // As JSX can have only one root element
