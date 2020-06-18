@@ -81,9 +81,9 @@ class App extends Component {
     render() {
 
         // Everything gets executed again whenever the render method is called for update
-
+        // This has the drawback that we cannot use the psuedo selectors
         const myButtonStyle = {
-            backgroundColor: "white",
+            backgroundColor: "green",
             font: 'inherit',
             padding: "8px",
             cursor: 'pointer',
@@ -110,6 +110,9 @@ class App extends Component {
                         })}
                 </div>
             );
+
+            myButtonStyle.backgroundColor="red";
+
         }
 
         // className is restriction of JSX as class is a reserved keyword in JS
@@ -121,6 +124,7 @@ class App extends Component {
                 <h1>Hi, I'm a React App</h1>
                 <p>This is really working!</p>
                 <button
+                    
                     style={myButtonStyle}
                     onClick={this.togglePersonsHandler}>Toggle Persons</button>
                 {persons}
