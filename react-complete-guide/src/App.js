@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person.js'
+import Radium from 'radium'
 // Person can be any name, but it convention to use the same name as the component Name
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
 // In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
@@ -88,7 +89,11 @@ class App extends Component {
             padding: "8px",
             cursor: 'pointer',
             border: '1px solid blue',
-            'boxShadow': '2px 4px 5px lightblue'
+            'boxShadow': '2px 4px 5px lightblue',
+            ':hover':{
+                backgroundColor:'lightgreen',
+                color:"black",
+            }
         };
 
         let persons = null;
@@ -112,7 +117,10 @@ class App extends Component {
             );
 
             myButtonStyle.backgroundColor = "red";
-
+            myButtonStyle[':hover']={
+                backgroundColor:'salmon',
+                color:"black",
+            }
         }
 
         // let classes = ['red', 'bold'].join(' ');//returns "red bold"
@@ -150,5 +158,6 @@ class App extends Component {
 
     }
 }
-
-export default App;
+// This is a higher order component
+// Radium can be used on class based or functional components
+export default Radium(App);

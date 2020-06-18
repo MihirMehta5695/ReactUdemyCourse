@@ -6,6 +6,7 @@
 
 import React from 'react';
 import './Person.css'
+import Radium from 'radium'
 // Remember to import the css file to apply css styles
 
 // This is possible
@@ -37,4 +38,4 @@ const person = (props) => {
     // here, the props.myChange is the function passed by the parent component
 }
 
-export default person;
+export default Radium(person);
