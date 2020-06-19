@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person.js'
-import Radium, { StyleRoot } from 'radium'
+
 // Person can be any name, but it convention to use the same name as the component Name
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
 // In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
@@ -139,18 +139,17 @@ class App extends Component {
             // This is similar to HTML but it is actually JSX
             // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
             // just call the method by this.switchNameHandler
-            <StyleRoot>
-                <div className="App">
-                    <h1>Hi, I'm a React App</h1>
-                    <p className={classes.join(' ')}>This is really working!</p>
-                    <button
+            <div className="App">
+                <h1>Hi, I'm a React App</h1>
+                <p className={classes.join(' ')}>This is really working!</p>
+                <button
 
-                        style={myButtonStyle}
-                        onClick={this.togglePersonsHandler}>Toggle Persons</button>
-                    {persons}
+                    style={myButtonStyle}
+                    onClick={this.togglePersonsHandler}>Toggle Persons</button>
+                {persons}
 
-                </div>
-            </StyleRoot>
+            </div>
+
             // <h1> Another Heading</h1> ->
             // As JSX can have only one root element
         );
@@ -162,4 +161,4 @@ class App extends Component {
 }
 // This is a higher order component
 // Radium can be used on class based or functional components
-export default Radium(App);
+export default App;

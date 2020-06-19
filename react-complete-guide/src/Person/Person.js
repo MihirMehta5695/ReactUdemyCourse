@@ -5,8 +5,8 @@
 // Also called as dumb component or presentational component
 
 import React from 'react';
-import './Person.css'
-import Radium from 'radium'
+// import './Person.css';
+import styled from 'styled-components'
 // Remember to import the css file to apply css styles
 
 // This is possible
@@ -24,26 +24,34 @@ import Radium from 'radium'
 // props can have any  name
 // When using class-based components, we access props by -> this.props
 
+const StyledDiv = styled.div`        
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+
+    @media (min-width: 500px) {
+        width: 450px;
+    }
+`
+
 const person = (props) => {
 
-    // To make the media queries work with Radium, in the root component we need to wrap whole application into the <StyleRoot> tag
-    const myStyle = {
-        '@media (min-with: 500px)': {
-            width: "450px"
-        }
-    };
 
     // 'children' is a reserved keyword
     // we can access the data passed between the component tag using props.children
     return (
-        <div className="Person" style={myStyle}>
-            <p onClick={props.myClick}>I'm a {props.name} and I am {props.age} years old!</p>
-            <p>{props.children}</p>
+        // <div className="Person" style={myStyle}>
+        <StyledDiv>
+            < p onClick={props.myClick} > I'm a {props.name} and I am {props.age} years old!</p>
+            < p > {props.children}</p >
             <input type="text" onChange={props.myChange} value={props.name} />
-        </div>
+        </StyledDiv>
     )
     // here, the props.myClick is the function passed by the parent component
     // here, the props.myChange is the function passed by the parent component
 }
 
-export default Radium(person);
+export default person;
