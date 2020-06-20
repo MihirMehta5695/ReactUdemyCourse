@@ -3,8 +3,9 @@ import './App.css';
 import Person from './Person/Person.js'
 import styled from 'styled-components'
 
+// Using the props passed to this component
 const StyledButton = styled.button`
-background-color: green;
+background-color: ${props => props.alt ? 'red' : 'green'};
 color:white;
 font: inherit;
 padding: 8px;
@@ -13,7 +14,7 @@ border: 1px solid blue;
 box-shadow: 2px 4px 5px lightblue;
 
 &:hover {
-    background-color: lightgreen;
+    background-color:${props => props.alt ? 'salmon' : 'lightgreen'} ;
     color: black;
 }
 `;
@@ -97,21 +98,6 @@ class App extends Component {
 
     render() {
 
-        // Everything gets executed again whenever the render method is called for update
-        // This has the drawback that we cannot use the psuedo selectors
-        const myButtonStyle = {
-            backgroundColor: "green",
-            font: 'inherit',
-            padding: "8px",
-            cursor: 'pointer',
-            border: '1px solid blue',
-            'boxShadow': '2px 4px 5px lightblue',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: "black",
-            }
-        };
-
         let persons = null;
 
         if (this.state.showPersons) {
@@ -131,12 +117,6 @@ class App extends Component {
                         })}
                 </div>
             );
-
-            myButtonStyle.backgroundColor = "red";
-            myButtonStyle[':hover'] = {
-                backgroundColor: 'salmon',
-                color: "black",
-            }
         }
 
         // let classes = ['red', 'bold'].join(' ');//returns "red bold"
@@ -158,7 +138,9 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p className={classes.join(' ')}>This is really working!</p>
+                {/* We can send props to this newly created component, like we can do in the normal-components */}
                 <StyledButton
+                    alt={this.state.showPersons}
                     onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
                 {persons}
 
