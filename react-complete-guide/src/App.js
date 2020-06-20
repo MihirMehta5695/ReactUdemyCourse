@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person.js'
+import styled from 'styled-components'
+
+const StyledButton = styled.button`
+background-color: green;
+color:white;
+font: inherit;
+padding: 8px;
+cursor: pointer;
+border: 1px solid blue;
+box-shadow: 2px 4px 5px lightblue;
+
+&:hover {
+    background-color: lightgreen;
+    color: black;
+}
+`;
 
 // Person can be any name, but it convention to use the same name as the component Name
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
@@ -142,10 +158,8 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p className={classes.join(' ')}>This is really working!</p>
-                <button
-
-                    style={myButtonStyle}
-                    onClick={this.togglePersonsHandler}>Toggle Persons</button>
+                <StyledButton
+                    onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
                 {persons}
 
             </div>

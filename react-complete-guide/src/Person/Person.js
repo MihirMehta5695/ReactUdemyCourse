@@ -38,8 +38,6 @@ const StyledDiv = styled.div`
 `
 
 const person = (props) => {
-
-
     // 'children' is a reserved keyword
     // we can access the data passed between the component tag using props.children
     return (
