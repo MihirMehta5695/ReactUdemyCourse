@@ -1,23 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person.js'
-import styled from 'styled-components'
-
-// Using the props passed to this component
-const StyledButton = styled.button`
-background-color: ${props => props.alt ? 'red' : 'green'};
-color:white;
-font: inherit;
-padding: 8px;
-cursor: pointer;
-border: 1px solid blue;
-box-shadow: 2px 4px 5px lightblue;
-
-&:hover {
-    background-color:${props => props.alt ? 'salmon' : 'lightgreen'} ;
-    color: black;
-}
-`;
 
 // Person can be any name, but it convention to use the same name as the component Name
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
@@ -98,6 +81,8 @@ class App extends Component {
 
     render() {
 
+        let btnClass = '';
+
         let persons = null;
 
         if (this.state.showPersons) {
@@ -117,16 +102,18 @@ class App extends Component {
                         })}
                 </div>
             );
+
+            btnClass = classes.Red;
         }
 
         // let classes = ['red', 'bold'].join(' ');//returns "red bold"
-        const classes = [];
+        const assignedClasses = [];
 
         if (this.state.persons.length <= 2) {
-            classes.push('red');//classes = ['red]
+            assignedClasses.push(classes.red);//classes = ['red]
         }
         if (this.state.persons.length <= 1) {
-            classes.push('bold'); // classes=['red','bold']
+            assignedClasses.push(classes.bold); // classes=['red','bold']
         }
 
 
@@ -135,13 +122,15 @@ class App extends Component {
             // This is similar to HTML but it is actually JSX
             // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
             // just call the method by this.switchNameHandler
-            <div className="App">
+            <div className={classes.App}>
                 <h1>Hi, I'm a React App</h1>
-                <p className={classes.join(' ')}>This is really working!</p>
+                <p className={assignedClasses.join(' ')}>This is really working!</p>
                 {/* We can send props to this newly created component, like we can do in the normal-components */}
-                <StyledButton
-                    alt={this.state.showPersons}
-                    onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
+                <button
+                    className={btnClass}
+                    onClick={this.togglePersonsHandler}>
+                    Toggle Persons
+                </button>
                 {persons}
 
             </div>
