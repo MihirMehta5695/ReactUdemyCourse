@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person.js'
-// Person can be any name, but it convention to use the same name as the component Name
-// But component name should always start with capital, as it will be used as tag -> Person, Animal
-// In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
+
 class App extends Component {
-    // This is a state-full component
-    // or called as smart component or container component
-    // It is a good practise to create as many state-less component as possible.
-
-
-    // only works when we have extended React.Component
-    // props is data sent from another component
-    // state is data maintained internally by the component
-    // state is a reserved word
     state = {
         persons: [
             { id: "sadvcxasd", name: 'Mihir', age: 25 },
@@ -24,37 +14,20 @@ class App extends Component {
         showPersons: false
     };
 
-    // This will be passed down to the child element,
-    // and will be called whenever there is a change in the input type text of person
     nameChangedHandler = (event, id) => {
-
         const personIndex = this.state.persons.findIndex(p => {
-            //deliberately making a mistake -> there is no field named userId
-            // return p.userId === id;
             return p.id === id;
         });
-
         const person = { ...this.state.persons[personIndex] }
-
-        // const personAlternative = Object.assign({}, this.state.persons[personIndex]);
-        //deliberately making a mistake -> there is no property named input
-        // person.name = event.input.value;
         person.name = event.target.value;
         const persons = [...this.state.persons];
         persons[personIndex] = person;
-
         this.setState({
             persons: persons
         });
     }
 
-    // Not used anymore
-    // typically an event handler function is named as {functionName}Handler,
-    // For eg:
     switchNameHandler = newName => {
-        // this will not work -> this.state.persons[0].name="13MB";
-        // The following code would only merge the persons object and wont change anything else , for eg otherValue would be unchanged
-        // This is only available in class-based components
         this.setState({
             persons: [
                 { name: newName, age: 25 },
@@ -70,83 +43,31 @@ class App extends Component {
     };
 
     deletePersonHandler = (personIndex) => {
-        // const persons = this.state.persons;
-        // Above line is flawed and can lead to unexpected outcomes in a huge app
-        // Instead of copying reference, now the actual contents are copied into person
-        // Using the slice method with no args we copy all the contents of array 
-        // const personsOld = this.state.persons.slice();
-        // Or you can also use the spread operator ...
         const persons = [...this.state.persons];
         persons.splice(personIndex, 1);
         this.setState({ persons: persons })
     };
 
     render() {
-
-        let btnClass = '';
-
         let persons = null;
-
         if (this.state.showPersons) {
             persons = (
-                <div>
-                    {this.state.persons.map(
-                        (person, index) => {
-                            return (
-                                <Person
-                                    key={person.id}
-                                    myClick={() => this.deletePersonHandler(index)}
-                                    name={person.name}
-                                    age={person.age}
-                                    myChange={(event) => this.nameChangedHandler(event, person.id)}
-                                />
-                            )
-                        })
-                    }
-                </div>
+                <Persons
+                    myClick={this.deletePersonHandler}
+                    myChange={this.nameChangedHandler}
+                    persons={this.state.persons} />
             );
-
-            btnClass = classes.Red;
         }
-
-        // let classes = ['red', 'bold'].join(' ');//returns "red bold"
-        const assignedClasses = [];
-
-        if (this.state.persons.length <= 2) {
-            assignedClasses.push(classes.red);//classes = ['red]
-        }
-        if (this.state.persons.length <= 1) {
-            assignedClasses.push(classes.bold); // classes=['red','bold']
-        }
-
-
-        // className is restriction of JSX as class is a reserved keyword in JS
         return (
-            // This is similar to HTML but it is actually JSX
-            // Dont add () after the end of the function name, otherwise function will be called as soon as page is rendered
-            // just call the method by this.switchNameHandler
             <div className={classes.App}>
-                <h1>Hi, I'm a React App</h1>
-                <p className={assignedClasses.join(' ')}>This is really working!</p>
-                {/* We can send props to this newly created component, like we can do in the normal-components */}
-                <button
-                    className={btnClass}
-                    onClick={this.togglePersonsHandler}>
-                    Toggle Persons
-                </button>
+                <Cockpit
+                    showPersons={this.state.showPersons}
+                    clicked={this.togglePersonsHandler}
+                    persons={this.state.persons}
+                />
                 {persons}
-
             </div>
-
-            // <h1> Another Heading</h1> ->
-            // As JSX can have only one root element
         );
-        // return React.createElement('div', null, 'h1', 'Hi, I\'m a React App!!!');
-        // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
-        // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
-
     }
 }
-// This is a higher order component
-// Radium can be used on class based or functional components
 export default App;
