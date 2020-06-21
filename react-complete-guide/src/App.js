@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person.js'
-
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 // Person can be any name, but it convention to use the same name as the component Name
 // But component name should always start with capital, as it will be used as tag -> Person, Animal
 // In react, the tags starting from smaller case are considered as tags -. eg: div, p, br, hr, table, etc 
@@ -94,15 +94,17 @@ class App extends Component {
                     {this.state.persons.map(
                         (person, index) => {
                             return (
-                                <Person
-                                    myClick={() => this.deletePersonHandler(index)}
-                                    name={person.name}
-                                    age={person.age}
-                                    key={person.id}
-                                    myChange={(event) => this.nameChangedHandler(event, person.id)}
-                                />
+                                <ErrorBoundary key={person.id} >
+                                    <Person
+                                        myClick={() => this.deletePersonHandler(index)}
+                                        name={person.name}
+                                        age={person.age}
+                                        myChange={(event) => this.nameChangedHandler(event, person.id)}
+                                    />
+                                </ErrorBoundary>
                             )
-                        })}
+                        })
+                    }
                 </div>
             );
 

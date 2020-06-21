@@ -24,8 +24,12 @@ import classes from './Person.css';
 // When using class-based components, we access props by -> this.props
 
 const person = (props) => {
-    // 'children' is a reserved keyword
-    // we can access the data passed between the component tag using props.children
+    // deliberately throwing error
+    const rnd = Math.random();
+    if (rnd > 0.7) {
+        throw new Error('Something went wrong!');
+    }
+
     return (
         // <div className="Person" style={myStyle}>
         <div className={classes.Person}>
