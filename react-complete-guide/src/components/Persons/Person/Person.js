@@ -24,11 +24,6 @@ import classes from './Person.css';
 // When using class-based components, we access props by -> this.props
 
 const person = (props) => {
-    // deliberately throwing error
-    const rnd = Math.random();
-    if (rnd > 0.7) {
-        throw new Error('Something went wrong!');
-    }
 
     return (
         // <div className="Person" style={myStyle}>
