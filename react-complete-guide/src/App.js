@@ -30,13 +30,15 @@ class App extends Component {
     nameChangedHandler = (event, id) => {
 
         const personIndex = this.state.persons.findIndex(p => {
+            //deliberately making a mistake -> there is no field named userId
+            // return p.userId === id;
             return p.id === id;
         });
 
         const person = { ...this.state.persons[personIndex] }
 
         const personAlternative = Object.assign({}, this.state.persons[personIndex]);
-        //deliberately making a mistake 
+        //deliberately making a mistake -> there is no property named input
         // person.name = event.input.value;
         person.name = event.target.value;
         const persons = [...this.state.persons];
