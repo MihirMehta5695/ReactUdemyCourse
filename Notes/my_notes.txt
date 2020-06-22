@@ -1,0 +1,23 @@
+-> Life Cycle Hooks are different than "React Hooks".
+
+#Component Lifecycle - Creation
+    (1) constructor(props)
+        Default ES6 class Feature
+        Constructor receives the props
+        always call super(props)
+        DO:     Set up State
+        DONT:   Cause any side-effects {AJAX calls or other things which cause multiple render calls}
+    
+    (2) getDerivedStateFromProps(props,state)
+        DO:     Sync state
+        DONT:   Cause Side-Effects {AJAX calls not to be made here, there are other better places}
+
+    (3) render()
+        Prepare & Structure your JSX Code
+
+    (4) the above render renders all the child components as well.
+        When all the lifecycle hooks of all the children are completed then only your components gets to the another State
+
+    (5) componentDidMount()
+        DO:     Cause Side-Effect {AJAX calls can be made here}
+        DONT:   Update State {triggers re-render}
