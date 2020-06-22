@@ -4,7 +4,27 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
-    state = {
+
+    // Constructor is called first when this component is called
+    constructor(props) {
+        super(props)
+        console.log('[App.js] constructor')
+
+        // Never user this.setState(), as there will be no previos state to merge into
+        // We can initialize the state here
+        this.state = {
+            persons: [
+                { id: "sadvcxasd", name: 'Mihir', age: 25 },
+                { id: "das2qe", name: "Mansi", age: 19 },
+                { id: "q2dasd", name: "Bhavesh", age: 53 }
+            ],
+            otherValue: "Some other value",
+            showPersons: false
+        };
+    }
+
+    // This is similar to intializing in the constructor
+    /*state = {
         persons: [
             { id: "sadvcxasd", name: 'Mihir', age: 25 },
             { id: "das2qe", name: "Mansi", age: 19 },
@@ -12,7 +32,21 @@ class App extends Component {
         ],
         otherValue: "Some other value",
         showPersons: false
-    };
+    };*/
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
+
+    // This may be deleted in the future releases
+    componentWillMount() {
+        console.log('[App.js] componentWillMount')
+    }
+
+    componentDidMount() {
+        console.log('[App.js] componentDidMount');
+    }
 
     nameChangedHandler = (event, id) => {
         const personIndex = this.state.persons.findIndex(p => {
@@ -49,6 +83,7 @@ class App extends Component {
     };
 
     render() {
+        console.log("[App.js] render");
         let persons = null;
         if (this.state.showPersons) {
             persons = (
