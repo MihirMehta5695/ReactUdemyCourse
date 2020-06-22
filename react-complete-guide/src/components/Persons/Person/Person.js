@@ -1,40 +1,23 @@
-// React convention to name component Folder with capital letter
-// Also, it is also convention to name all the files in same context
-// react is all about compos
-// This is a state-less component 
-// Also called as dumb component or presentational component
-
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Person.css';
-// Remember to import the css file to apply css styles
+class Person extends Component {
 
-// This is possible
-/*export function PersonOld() {
-    return <h2>Hello World!</h2>
-}*/
+    render() {
 
-// This is also possible (ES5 syntax)
-/*export var personES5 = function () {
-    return <h2>Hello World!<br />This is a person component!</h2>
-}; */
-
-// The convention and
-//the standard using ES6 is 
-// props can have any  name
-// When using class-based components, we access props by -> this.props
-
-const person = (props) => {
-
-    return (
-        // <div className="Person" style={myStyle}>
-        <div className={classes.Person}>
-            <p onClick={props.myClick} > I'm a {props.name} and I am {props.age} years old!</p>
-            <p> {props.children}</p>
-            <input type="text" onChange={props.myChange} value={props.name} />
-        </div>
-    )
-    // here, the props.myClick is the function passed by the parent component
-    // here, the props.myChange is the function passed by the parent component
+        return (
+            <div className={classes.Person} >
+                <p
+                    onClick={this.props.myClick} >
+                    I'm a {this.props.name} and I am {this.props.age} years old!
+                </p>
+                <p> {this.props.children}</p>
+                <input
+                    type="text"
+                    onChange={this.props.myChange}
+                    value={this.props.name} />
+            </div>
+        )
+    }
 }
 
-export default person;
+export default Person;

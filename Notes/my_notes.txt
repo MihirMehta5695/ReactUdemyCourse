@@ -21,3 +21,29 @@
     (5) componentDidMount()
         DO:     Cause Side-Effect {AJAX calls can be made here}
         DONT:   Update State {triggers re-render}
+
+
+
+#Component Lifecycle - Update
+    (1) getDerivedStateFromProps(props,state)
+        DO:     Sync State to props
+        DONT:   Cause Side-Effects {AJAX calls not to be made here, there are other better places}
+
+    (2) shouldComponentUpdate(nextProps, nextState)
+        - Allows you to cancel updating process
+        DO:     Decide whether to Continue or not
+        DONT:   Cause Side-Effects
+
+    (3) render()
+        Prepare & Structure your JSX Code
+
+    (4) the above render renders all the child components as well.
+        When all the lifecycle hooks of all the children are completed then only your components gets to the another State   
+
+    (5) getSnapshotBeforeUpdate(prevProps, prevState)
+        DO:     Last-minute DOM operations
+        DONT:   Cause Side-Effects    
+
+    (6) componentDidUpdate()
+        DO:     Cause Side-Effects
+        DONT:   Update State (triggers re-render)

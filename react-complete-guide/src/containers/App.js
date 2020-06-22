@@ -40,9 +40,9 @@ class App extends Component {
     }
 
     // This may be deleted in the future releases
-    componentWillMount() {
+    /*componentWillMount() {
         console.log('[App.js] componentWillMount')
-    }
+    }*/
 
     componentDidMount() {
         console.log('[App.js] componentDidMount');
