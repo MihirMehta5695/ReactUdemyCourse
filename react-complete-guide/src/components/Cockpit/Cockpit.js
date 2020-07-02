@@ -5,11 +5,18 @@ import classes from './Cockpit.css'
 // useEffect combines all the life-cycle hooks in class-based components into one method called useEffect() for functional components.
 const cockpit = props => {
 
+
     // useEffect is called for every render cycle
+    // the second argument lets react know when to call the useEffect method
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        // http requests
-    });
+        // mocking http requests
+        setTimeout(() => {
+            alert('Saving data to the cloud!')
+        }, 1000);
+    }, []); // if we leave the second argument empty, it tells react to run the useEffect method only for the first time.
+    // You can multiple useEffect calls, as many as you want
+    // useEffect();
 
     // let classes = ['red', 'bold'].join(' ');//returns "red bold"
     const assignedClasses = [];
