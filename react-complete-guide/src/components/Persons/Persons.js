@@ -37,6 +37,11 @@ export default class Persons extends Component {
         console.log(snapshot)
     }
 
+    // To perform cleanup before the component gets unmounted from react
+    componentWillUnmount() {
+        console.log('[Person.js] componentWillUnmount')
+    }
+
     render() {
         console.log("[Persons.js] rendering....");
         return (
