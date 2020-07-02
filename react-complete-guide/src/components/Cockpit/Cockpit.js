@@ -11,12 +11,13 @@ const cockpit = props => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         // mocking http requests
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('Saving data to the cloud!')
         }, 1000);
         return () => {
             // This is called by the useEffect() for cleanup, similar to componentWillUnmount
-            console.log('[Cockpit.js] cleanUp work in useEffect')
+            console.log('[Cockpit.js] cleanUp work in useEffect');
+            clearTimeout(timer);
         }
     }, []); // if we leave the second argument empty, it tells react to run the useEffect method only for the first time.
     // acts as 
