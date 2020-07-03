@@ -51,12 +51,12 @@ class App extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[App.js] shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
-        //return false; //prevents update
+        // if (nextProps.persons !== this.props.persons) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        return true; //prevents update
     }
 
     componentDidUpdate() {
@@ -115,7 +115,7 @@ class App extends Component {
                     title={this.props.appTitle}
                     showPersons={this.state.showPersons}
                     clicked={this.togglePersonsHandler}
-                    persons={this.state.persons}
+                    personsLength={this.state.persons.length}
                 /> : null}
                 {persons}
             </div>
