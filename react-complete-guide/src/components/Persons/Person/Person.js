@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Person.css';
 import Aux from '../../../containers/hoc/Auxiliary/Auxiliary';
+import withJSClass from '../../../containers/hoc/With/withJSClass';
 class Person extends Component {
 
     render() {
