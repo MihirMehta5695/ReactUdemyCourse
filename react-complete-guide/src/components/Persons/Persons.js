@@ -39,15 +39,15 @@ export default class Persons extends PureComponent {
         }
     */
     //    If parent is going to update and pass new props, makes no sense of implementing shouldComponentUpdate()
-/*     shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
-        // return false; //prevents update
-    } */
+    /*     shouldComponentUpdate(nextProps, nextState) {
+            console.log('[Persons.js] shouldComponentUpdate');
+            if (nextProps.persons !== this.props.persons) {
+                return true;
+            } else {
+                return false;
+            }
+            // return false; //prevents update
+        } */
 
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -78,6 +78,7 @@ export default class Persons extends PureComponent {
                             name={person.name}
                             age={person.age}
                             myChange={(event) => this.props.myChange(event, person.id)}
+                            isAuth={this.props.isAuthenticated}
                         />
                     )
                 })

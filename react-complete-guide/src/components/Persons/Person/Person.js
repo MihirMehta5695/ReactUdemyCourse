@@ -24,6 +24,7 @@ class Person extends Component {
         // React has its own Auxillary COmponent called as the Fragment component
         return (
             <Aux>
+                {this.props.isAuth ? <p>Authenticated</p> : <p>Please Login in</p>}
                 <p
                     ref={this.elementRef}
                     onClick={this.props.myClick} >
