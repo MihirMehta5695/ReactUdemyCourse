@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css'
+import AuthContext from '../../context/auth-context'
 
 // after useState, the next import react-hook you can use is the useEffect() hook.
 // useEffect combines all the life-cycle hooks in class-based components into one method called useEffect() for functional components.
@@ -56,7 +57,9 @@ const cockpit = props => {
                 onClick={props.clicked}>
                 Toggle Persons
             </button>
-            <button onClick={props.login}>Log in</button>
+            <AuthContext.Consumer>
+                {(context) => <button onClick={context.login}>Log in</button>}
+            </AuthContext.Consumer>
         </div>
     );
 };

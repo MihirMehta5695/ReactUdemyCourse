@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classes from './Person.css';
 import Aux from '../../../containers/hoc/Auxiliary/Auxiliary';
 import withJSClass from '../../../containers/hoc/With/withJSClass';
+import AuthContext from '../../../context/auth-context'
 class Person extends Component {
 
 
@@ -26,7 +27,9 @@ class Person extends Component {
         // This was achieved via prop-chaining
         return (
             <Aux>
-                {this.props.isAuth ? <p>Authenticated</p> : <p>Please Login in</p>}
+                <AuthContext.Consumer>
+                    {(context) => context.authenticated ? <p>Authenticated</p> : <p>Please Login in</p>}
+                </AuthContext.Consumer>
                 <p
                     ref={this.elementRef}
                     onClick={this.props.myClick} >

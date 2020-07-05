@@ -78,7 +78,6 @@ export default class Persons extends PureComponent {
                             name={person.name}
                             age={person.age}
                             myChange={(event) => this.props.myChange(event, person.id)}
-                            isAuth={this.props.isAuthenticated}
                         />
                     )
                 })
