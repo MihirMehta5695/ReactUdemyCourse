@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css'
 
 // after useState, the next import react-hook you can use is the useEffect() hook.
 // useEffect combines all the life-cycle hooks in class-based components into one method called useEffect() for functional components.
 const cockpit = props => {
 
+    const toggleBtnRef = useRef(null);
 
     // useEffect is called for every render cycle
     // the second argument lets react know when to call the useEffect method
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         // mocking http requests
-        setTimeout(() => {
-            alert('Saving data to the cloud!')
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('Saving data to the cloud!')
+        // }, 1000);
+        toggleBtnRef.current.click();
         return () => {
             // This is called by the useEffect() for cleanup, similar to componentWillUnmount
             console.log('[Cockpit.js] cleanUp work in useEffect')
@@ -49,6 +51,7 @@ const cockpit = props => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is really working!</p>
             <button
+                ref={toggleBtnRef}
                 className={btnClass}
                 onClick={props.clicked}>
                 Toggle Persons
