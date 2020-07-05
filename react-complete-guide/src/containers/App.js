@@ -21,7 +21,8 @@ class App extends Component {
             ],
             otherValue: "Some other value",
             showPersons: false,
-            showCockpit: true
+            showCockpit: true,
+            changeCounter: 0
         };
     }
 
@@ -67,9 +68,18 @@ class App extends Component {
         person.name = event.target.value;
         const persons = [...this.state.persons];
         persons[personIndex] = person;
-        this.setState({
-            persons: persons
-        });
+        // Here, what can go wrong is that react does not guarantee that this.state.changeCounter will be the previous state.
+        // So while running this code, it is not guaranteed that values of changeCounter (which depends on previous state) will be updated correctly.
+        /* this.setState({
+            persons: persons,
+            changeCounter: this.state.changeCounter + 1
+        }); */
+
+        // A better way to solve that issue is to use another syntax of setState as follows:
+        this.setState((prevState, props) => ({
+            persons: persons,
+            changeCounter: prevState.changeCounter + 1
+        }));
     }
 
     switchNameHandler = newName => {
