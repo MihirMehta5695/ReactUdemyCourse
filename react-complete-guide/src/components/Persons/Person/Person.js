@@ -22,6 +22,8 @@ class Person extends Component {
 
     render() {
         // React has its own Auxillary COmponent called as the Fragment component
+        // The isAuth prop is passed on from App.js to this component.
+        // This was achieved via prop-chaining
         return (
             <Aux>
                 {this.props.isAuth ? <p>Authenticated</p> : <p>Please Login in</p>}
