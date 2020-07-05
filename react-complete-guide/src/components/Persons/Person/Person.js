@@ -6,12 +6,14 @@ import withJSClass from '../../../containers/hoc/With/withJSClass';
 import AuthContext from '../../../context/auth-context'
 class Person extends Component {
 
-
     constructor(props) {
         super(props)
         // This work only in react v16+
         this.elementRef = React.createRef();
     }
+
+    // Only in class-based components
+    static contextType = AuthContext;
 
     componentDidMount() {
         // This focuses on the first input element it finds globally
@@ -19,6 +21,8 @@ class Person extends Component {
 
         this.inputElement.focus(); //This works in all versions of react
         this.elementRef.current.style.color = 'red';  // This work only in react v16+
+
+        console.log(this.context.authenticated);
     }
 
     render() {
@@ -27,9 +31,11 @@ class Person extends Component {
         // This was achieved via prop-chaining
         return (
             <Aux>
-                <AuthContext.Consumer>
+                {/*                 <AuthContext.Consumer>
                     {(context) => context.authenticated ? <p>Authenticated</p> : <p>Please Login in</p>}
-                </AuthContext.Consumer>
+                </AuthContext.Consumer> */}
+                {this.context.authenticated ? <p>Authenticated</p> : <p>Please Login in</p>}
+
                 <p
                     ref={this.elementRef}
                     onClick={this.props.myClick} >
