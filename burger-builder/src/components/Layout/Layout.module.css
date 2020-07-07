@@ -1,7 +1,3 @@
-.myDiv{
-    width: 500px;
-    height: 100px;
-    background-color: aquamarine;
-    border-color: aqua;
-    border-width: 10px;
+.Content {
+    margin-top: 16px;
 }
