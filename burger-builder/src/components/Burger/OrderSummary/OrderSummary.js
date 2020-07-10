@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../../UI/Modal/Modal';
 import Aux from '../../../hoc/Auxilliary';
-
+import Button from '../../UI/Button/Button';
 const OrderSummary = props => {
     const ingredientSummary = Object.keys(props.ingredients).map(igKey => (
         <li key={igKey}>
@@ -17,6 +17,8 @@ const OrderSummary = props => {
                 {ingredientSummary}
             </ul>
             <p>Continue to Checkout?</p>
+            <Button onClick={props.}>CANCEL</Button>
+            <Button>CONTINUE</Button>
         </Aux>
     );
 };
