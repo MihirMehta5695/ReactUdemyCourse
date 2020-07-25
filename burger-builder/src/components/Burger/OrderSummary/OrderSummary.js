@@ -1,6 +1,5 @@
 import React from 'react';
-import Modal from '../../UI/Modal/Modal';
-import Aux from '../../../hoc/Auxilliary';
+import Aux from '../../../hoc/Auxilliary/Auxilliary';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends React.Component {
@@ -9,7 +8,7 @@ class OrderSummary extends React.Component {
         console.log('[OrderSummary] WillUpdate');
     }
 
-    
+
     render() {
         const ingredientSummary = Object.keys(this.props.ingredients).map(igKey => (
             <li key={igKey}>
