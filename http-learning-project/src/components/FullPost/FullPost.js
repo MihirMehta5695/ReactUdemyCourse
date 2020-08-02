@@ -18,6 +18,7 @@ class FullPost extends Component {
 
             );
         }
+        
         return post;
     }
 }
