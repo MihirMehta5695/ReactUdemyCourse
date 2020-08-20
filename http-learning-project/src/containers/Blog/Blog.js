@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts'
-import { Route, Link } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
 
 class Blog extends Component {
@@ -14,15 +14,26 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li>
+                                <NavLink
+                                    to="/"
+                                    exact
+                                    activeClassName="my-active"
+                                    activeStyle={{
+                                        color: "#fa923f",
+                                        "text-decoration": "underline"
+                                    }}
+                                >Home
+                                </NavLink>
+                            </li>
+                            <li><NavLink to={{
                                 // the to property is always absolute path
                                 // for generating relative path, we can use:
                                 // pathname: this.props.match.url + '/new-post'
                                 pathname: "/new-post",
                                 hash: "#submit",
                                 search: "?quick-submit=true"
-                            }}>New Post</Link></li>
+                            }}>New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
