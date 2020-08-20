@@ -13,6 +13,8 @@ class Posts extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
+
         // wrong error URL for testing
         // axios.get('https://jsonplaceholder.typicode.com/postsssss')
         axios.get('/posts')
