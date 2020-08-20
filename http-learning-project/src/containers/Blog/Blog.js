@@ -16,6 +16,9 @@ class Blog extends Component {
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to={{
+                                // the to property is always absolute path
+                                // for generating relative path, we can use:
+                                // pathname: this.props.match.url + '/new-post'
                                 pathname: "/new-post",
                                 hash: "#submit",
                                 search: "?quick-submit=true"
