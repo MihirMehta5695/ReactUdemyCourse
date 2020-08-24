@@ -24,7 +24,7 @@ class Blog extends Component {
                                         color: "#fa923f",
                                         "text-decoration": "underline"
                                     }}
-                                >Home
+                                >Posts
                                 </NavLink>
                             </li>
                             <li><NavLink to={{
