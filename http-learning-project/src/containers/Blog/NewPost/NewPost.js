@@ -34,6 +34,7 @@ class NewPost extends Component {
             redirect = <Redirect to="/posts" />
         }
 
+        
         return (
             <div className="NewPost">
                 {redirect}
