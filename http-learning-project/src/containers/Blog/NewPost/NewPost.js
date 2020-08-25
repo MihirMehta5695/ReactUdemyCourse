@@ -23,7 +23,9 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
-                this.setState({ submitted: true })
+                // this.setState({ submitted: true })
+                // Using the this.props.history to redirect, helps us to avoid the state management, as we did for conditional redirect
+                this.props.history.push('/posts');
             });
     }
 
@@ -34,7 +36,7 @@ class NewPost extends Component {
             redirect = <Redirect to="/posts" />
         }
 
-        
+
         return (
             <div className="NewPost">
                 {redirect}
