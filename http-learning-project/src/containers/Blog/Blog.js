@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts'
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
 
 class Blog extends Component {
@@ -43,6 +43,11 @@ class Blog extends Component {
                 <Switch>
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/posts" component={Posts} />
+                    {/* When using inside the Switch, we can specify the "from" attribute in the Redirect Component
+                    When we use the Redirect component outside switch, we cannot use the "from" attribute
+                    This type of Redirect is called as unconditional Redirect
+                    */}
+                    <Redirect from="/" to="/posts"/>
                 </Switch>
             </div>
         );

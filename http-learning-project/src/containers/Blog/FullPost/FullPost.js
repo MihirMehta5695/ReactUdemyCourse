@@ -20,7 +20,8 @@ class FullPost extends Component {
 
     loadData() {
         if (this.props.match.params.id) {
-            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id != this.props.match.params.id)) {
+            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== +this.props.match.params.id)) {
+                // Converting the this.prop.match.params.id from string to integer by adding the + symbol before it
                 axios.get('/posts/' + this.props.match.params.id)
                     .then(response => {
                         // console.log(response);
