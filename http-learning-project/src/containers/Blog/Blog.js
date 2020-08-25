@@ -5,7 +5,9 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
 
 class Blog extends Component {
-
+    state = {
+        auth: false
+    };
 
 
     render() {
@@ -41,13 +43,14 @@ class Blog extends Component {
                 <Route path="/" exact render={() => <h1>Home 2</h1>} /> */}
                 <Route path="/" exact component={Posts} />
                 <Switch>
-                    <Route path="/new-post" component={NewPost} />
+                    {/* This is know as guard in React -> using conditonal Routes */}
+                    {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
                     <Route path="/posts" component={Posts} />
                     {/* When using inside the Switch, we can specify the "from" attribute in the Redirect Component
                     When we use the Redirect component outside switch, we cannot use the "from" attribute
                     This type of Redirect is called as unconditional Redirect
                     */}
-                    <Redirect from="/" to="/posts"/>
+                    <Redirect from="/" to="/posts" />
                 </Switch>
             </div>
         );
