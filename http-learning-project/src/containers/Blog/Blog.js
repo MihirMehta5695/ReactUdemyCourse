@@ -50,7 +50,9 @@ class Blog extends Component {
                     When we use the Redirect component outside switch, we cannot use the "from" attribute
                     This type of Redirect is called as unconditional Redirect
                     */}
-                    <Redirect from="/" to="/posts" />
+                    {/* <Redirect from="/" to="/posts" /> */}
+                    {/* For 404 not found case, firstly comment out '/' path and write the below code */}
+                    <Route render={() => <h1>Not Found</h1>} />
                 </Switch>
             </div>
         );
