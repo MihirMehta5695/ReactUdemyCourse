@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
-import NewPost from './NewPost/NewPost'
+import asyncComponent from '../../hoc/asyncComponent';
 
+// import NewPost from './NewPost/NewPost'
+
+const AsyncNewPost = asyncComponent(()=>{
+    return import('./NewPost/NewPost')
+});
 class Blog extends Component {
     state = {
-        auth: false
+        auth: true
     };
 
 
@@ -44,7 +49,7 @@ class Blog extends Component {
                 <Route path="/" exact component={Posts} />
                 <Switch>
                     {/* This is know as guard in React -> using conditonal Routes */}
-                    {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
+                    {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
                     <Route path="/posts" component={Posts} />
                     {/* When using inside the Switch, we can specify the "from" attribute in the Redirect Component
                     When we use the Redirect component outside switch, we cannot use the "from" attribute
