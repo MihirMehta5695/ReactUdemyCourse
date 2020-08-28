@@ -30,7 +30,7 @@ class App extends Component {
         ):<User/>}
       </React.Fragment>
 
-      /*       <BrowserRouter>
+      /*       <BrowserRouter basename="/">
         <React.Fragment>
           <nav>
             <NavLink to="/user">User Page</NavLink> |&nbsp;
