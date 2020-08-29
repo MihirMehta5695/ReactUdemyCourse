@@ -1,0 +1,33 @@
+nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    display: inline;
+    padding: 20px;
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.active {
+    color: red;
+}
+
+a:hover,
+a:active,
+a.active {
+    color: #fa923f;
+}
