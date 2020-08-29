@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import './Courses.css';
+import { Link } from 'react-router-dom';
 
 class Courses extends Component {
     state = {
@@ -11,15 +11,21 @@ class Courses extends Component {
         ]
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <h1>Amazing Udemy Courses</h1>
                 <section className="Courses">
                     {
-                        this.state.courses.map( course => {
-                            return <article className="Course" key={course.id}>{course.title}</article>;
-                        } )
+                        this.state.courses.map(course => {
+                            return (
+                                <Link
+                                    to={this.props.match.url + "/" + course.id + '/' + course.title}
+                                    key={course.id}>
+                                    <article className="Course" >{course.title}</article>
+                                </Link>
+                            );
+                        })
                     }
                 </section>
             </div>
