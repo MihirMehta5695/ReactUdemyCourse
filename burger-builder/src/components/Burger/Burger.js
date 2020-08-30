@@ -1,9 +1,12 @@
 import React from 'react';
 import classes from './Burger.module.css'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import { withRouter } from 'react-router-dom'
 
 const burger = (props) => {
-
+    // Accessing routing props even when this component is not directly exposed using Routing.
+    // This is possible because of withRouter HoC provided by React
+    console.log(props);
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             return [...Array(props.ingredients[igKey])].map((_, i) => {
@@ -27,4 +30,4 @@ const burger = (props) => {
     );
 }
 
-export default burger;
+export default withRouter(burger);

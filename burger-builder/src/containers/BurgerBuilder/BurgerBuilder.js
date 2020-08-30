@@ -93,7 +93,7 @@ class BurgerBuilder extends Component {
 
         // alert('You continue!')
         // For Firebase to function correctly, remember to use '.json' after the endpoint, z.B.
-        const order = {
+        /* const order = {
             ingredients: this.state.ingredients,
             price: this.state.totalPrice,
             customer: {
@@ -110,7 +110,8 @@ class BurgerBuilder extends Component {
         // axios.post('/orders', order) -> for simulating the error
         axios.post('/orders.json', order)
             .then(response => this.setState({ loading: false, purchasing: false }))
-            .catch(error => this.setState({ loading: false, purchasing: false }))
+            .catch(error => this.setState({ loading: false, purchasing: false })) */
+        this.props.history.push('/checkout');
     }
 
     render() {
