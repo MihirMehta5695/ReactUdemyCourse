@@ -13,6 +13,17 @@ export default class Checkout extends Component {
 
     }
 
+    componentDidMount() {
+        const query = new URLSearchParams(this.props.location.search)
+        const ingredients = {};
+        for (let param of query.entries()) {
+            // values that we get are in the format: ['salad','1']
+            ingredients[param[0]] = +param[1]
+        }
+        this.setState({ ingredients: ingredients })
+
+    }
+
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     }
