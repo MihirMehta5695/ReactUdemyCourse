@@ -92,29 +92,11 @@ class BurgerBuilder extends Component {
         this.setState({ loading: true })
 
         // alert('You continue!')
-        // For Firebase to function correctly, remember to use '.json' after the endpoint, z.B.
-        /* const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: "Mihir Mehta",
-                address: {
-                    streetName: "TestStreet 1",
-                    zipCode: 156151,
-                    country: "India"
-                },
-                email: "test@test.com"
-            },
-            deliveryMethod: "fastest"
-        };
-        // axios.post('/orders', order) -> for simulating the error
-        axios.post('/orders.json', order)
-            .then(response => this.setState({ loading: false, purchasing: false }))
-            .catch(error => this.setState({ loading: false, purchasing: false })) */
         const queryParams = [];
         for (let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
         }
+        queryParams.push('price='+this.state.totalPrice)
         const queryString = queryParams.join('&');
 
         this.props.history.push({
