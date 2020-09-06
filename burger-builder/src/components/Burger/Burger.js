@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 const burger = (props) => {
     // Accessing routing props even when this component is not directly exposed using Routing.
     // This is possible because of withRouter HoC provided by React
-    console.log(props);
+    // console.log(props);
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             return [...Array(props.ingredients[igKey])].map((_, i) => {
