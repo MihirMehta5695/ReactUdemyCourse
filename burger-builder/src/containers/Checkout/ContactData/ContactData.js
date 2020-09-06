@@ -8,11 +8,63 @@ import Input from '../../../components/UI/Input/Input';
 
 export default class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm: {
+            name: {
+                elementType: "input",
+                elementConfig: {
+                    type: 'text',
+                    placeholder: "Your Name"
+                },
+                value: ''
+            },
+            street: {
+                elementType: "input",
+                elementConfig: {
+                    type: 'text',
+                    placeholder: "Street"
+                },
+                value: ''
+            },
+            zipCode: {
+                elementType: "input",
+                elementConfig: {
+                    type: 'text',
+                    placeholder: "ZIP Code"
+                },
+                value: ''
+            },
+            country: {
+                elementType: "input",
+                elementConfig: {
+                    type: 'text',
+                    placeholder: "Country"
+                },
+                value: ''
+            },
+            email: {
+                elementType: "input",
+                elementConfig: {
+                    type: 'email',
+                    placeholder: "Your E-Mail"
+                },
+                value: ''
+            },
+        },
+        deliveryMethod: {
+            elementType: "input",
+            elementConfig: {
+                options: [
+                    {
+                        value: 'fastest',
+                        displayValue: "Fastest"
+                    },
+                    {
+                        value: 'cheapest',
+                        displayValue: "Cheapest"
+                    }
+                ]
+            },
+            value: ''
         },
         loading: false
     }
@@ -22,17 +74,7 @@ export default class ContactData extends Component {
         // For Firebase to function correctly, remember to use '.json' after the endpoint, z.B.
         const order = {
             ingredients: this.props.ingredients,
-            price: this.props.price,
-            customer: {
-                name: "Mihir Mehta",
-                address: {
-                    streetName: "TestStreet 1",
-                    zipCode: 156151,
-                    country: "India"
-                },
-                email: "test@test.com"
-            },
-            deliveryMethod: "fastest"
+            price: this.props.price
         };
         // axios.post('/orders', order) -> for simulating the error
         axios.post('/orders.json', order)
@@ -46,7 +88,7 @@ export default class ContactData extends Component {
     render() {
         let form = (
             <form>
-                <Input inputtype="input" type="text" placeholder="Your Name" name="name" />
+                <Input elementType="..." elementConfig="..." value='' />
                 <Input inputtype="input" type="email" placeholder="Your Email" name="email" />
                 <Input inputtype="input" type="text" placeholder="Street" name="street" />
                 <Input inputtype="input" type="text" placeholder="Postal Code" name="postalCode" />
