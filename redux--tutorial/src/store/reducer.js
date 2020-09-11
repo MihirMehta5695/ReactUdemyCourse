@@ -26,14 +26,25 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 counter: state.counter - action.value
-            }
+            };
+
         case "STORE_RESULT":
             // Array.concat add element in immuttably
             return {
                 ...state,
                 results: state.results.concat({ id: new Date(), value: state.counter })
             }
-            break;
+
+        case "DELETE_RESULT":
+            // const id = 2;
+            // const newArray = [...state.results];
+            // newArray.splice(id, 1)
+
+            const updatedArray = state.results.filter(result => result.id !== action.resultElementId)
+            return {
+                ...state,
+                results: updatedArray
+            }
     }
 
     return state;
