@@ -5,33 +5,12 @@ import AddPerson from '../components/AddPerson/AddPerson';
 import * as actionTypes from '../store/action'
 import addPerson from '../components/AddPerson/AddPerson';
 class Persons extends Component {
-    state = {
-        persons: []
-    }
-
-    personAddedHandler = () => {
-        const newPerson = {
-            id: Math.random(), // not really unique but good enough here!
-            name: 'Mihir',
-            age: Math.floor(Math.random() * 40)
-        }
-        this.setState((prevState) => {
-            return { persons: prevState.persons.concat(newPerson) }
-        });
-    }
-
     newPersonCreator = () => {
         return {
             id: Math.random(), // not really unique but good enough here!
             name: 'Mihir',
             age: Math.floor(Math.random() * 40)
         };
-    }
-
-    personDeletedHandler = (personId) => {
-        this.setState((prevState) => {
-            return { persons: prevState.persons.filter(person => person.id !== personId) }
-        });
     }
 
     render() {
