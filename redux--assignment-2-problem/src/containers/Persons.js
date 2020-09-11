@@ -16,7 +16,7 @@ class Persons extends Component {
     render() {
         return (
             <div>
-                <AddPerson personAdded={() => this.props.addPerson(this.newPersonCreator())} />
+                <AddPerson personAdded={(name, age) => this.props.addPerson(name, age)} />
                 {this.props.people.map(person => (
                     <Person
                         key={person.id}
@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addPerson: (person) => dispatch({ type: actionTypes.ADD_PERSON, person: person }),
+    addPerson: (name, age) => dispatch({ type: actionTypes.ADD_PERSON, personData: { name: name, age: age } }),
     deletePerson: (personId) => dispatch({ type: actionTypes.DELETE_PERSON, personId: personId })
 })
 
