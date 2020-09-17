@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as actionTypes from '../../store/actions'
+import { increment } from '../actions/actions'
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 import { connect } from 'react-redux';
@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 // This method will map the Dispatchers of Redux with props recieved by this container/components
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
+        onIncrementCounter: () => dispatch(increment()),
         onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
         onAddCounter: (val) => dispatch({ type: actionTypes.ADD, value: val }),
         onSubtractCounter: (val) => dispatch({ type: actionTypes.SUBTRACT, value: val }),
