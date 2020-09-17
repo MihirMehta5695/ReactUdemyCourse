@@ -23,10 +23,21 @@ export const subtract = val => ({
     value: val
 })
 
-export const storeResult = result => ({
-    type: STORE_RESULT,
-    result: result
-})
+export const saveResult = (result) => {
+    return {
+        type: STORE_RESULT,
+        result: result
+    }
+}
+
+export const storeResult = result => {
+    // Because of middleware -> redux-thunk
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(saveResult(result))
+        }, 2000);
+    }
+}
 
 export const deleteResult = id => ({
     type: DELETE_RESULT,
