@@ -11,9 +11,11 @@ export const saveResult = (result) => {
 }
 
 export const storeResult = result => {
-    // Because of middleware -> redux-thunk
-    return dispatch => {
+
+    return (dispatch, getState) => {
         setTimeout(() => {
+            const oldCounter = getState().ctr.counter; 
+            console.log(oldCounter)
             dispatch(saveResult(result))
         }, 2000);
     }
