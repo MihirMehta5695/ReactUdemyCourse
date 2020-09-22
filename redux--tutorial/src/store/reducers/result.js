@@ -11,6 +11,8 @@ const reducer = (state = initialState, action) => {
             // Array.concat add element in immuttably
             return {
                 ...state,
+                // If we wanted to transform result before storage, we can simply transform it like the below comment:
+                // results: state.results.concat({ id: new Date(), value: action.result *2 })
                 results: state.results.concat({ id: new Date(), value: action.result })
             }
 

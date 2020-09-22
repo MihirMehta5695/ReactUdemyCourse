@@ -1,10 +1,13 @@
 import * as actionTypes from './actionTypes'
 
 export const saveResult = (result) => {
+    // one way to transform data before storing is to transform it in the action file itself
+    // const updatedResult = result*2;//Like this 
     return {
         type: actionTypes.STORE_RESULT,
-        result: result
+        result: result/*updatedResult*/
     }
+    // Other way to transform data before storing is to transform it in the reducer
 }
 
 export const storeResult = result => {
